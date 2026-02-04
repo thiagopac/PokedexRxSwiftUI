@@ -1,0 +1,55 @@
+name: PokedexRxSwiftUI
+options:
+  bundleIdPrefix: com.study
+  deploymentTarget:
+    iOS: '15.0'
+  createIntermediateGroups: true
+  defaultConfig: Debug
+  developmentLanguage: en
+settings:
+  SWIFT_VERSION: '6.0'
+  IPHONEOS_DEPLOYMENT_TARGET: '15.0'
+  CURRENT_PROJECT_VERSION: '1'
+  MARKETING_VERSION: '1.0'
+  PRODUCT_BUNDLE_IDENTIFIER: com.study.pokedex
+  DEVELOPMENT_TEAM: ''
+packages:
+  RxSwift:
+    url: https://github.com/ReactiveX/RxSwift
+    from: 6.7.1
+
+targets:
+  PokedexRxSwiftUI:
+    type: application
+    platform: iOS
+    sources:
+      - path: PokedexRxSwiftUI/Sources
+    resources:
+      - path: PokedexRxSwiftUI/Resources
+    settings:
+      base:
+        INFOPLIST_FILE: PokedexRxSwiftUI/Resources/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    dependencies:
+      - package: RxSwift
+        product: RxSwift
+      - package: RxSwift
+        product: RxCocoa
+
+  PokedexRxSwiftUITests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: PokedexRxSwiftUI/Tests
+    dependencies:
+      - target: PokedexRxSwiftUI
+      - package: RxSwift
+        product: RxSwift
+
+  PokedexRxSwiftUIUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: PokedexRxSwiftUI/UITests
+    dependencies:
+      - target: PokedexRxSwiftUI
